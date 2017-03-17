@@ -4,13 +4,29 @@
   "description": "Node-Red nodes to connect to and interact with the ProdataKey pdk.io platform.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist/*; webpack; babel server --out-dir dist; cp -aR locales dist"
   },
   "author": "Joshua Perry <josh@pdk.io>",
   "license": "MIT",
   "node-red": {
-	  "nodes": {
-		  "auth": "auth/auth.js"
-	  }
+    "nodes": {
+      "pdk": "dist/pdk.js"
+    }
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.1.11",
+    "html-webpack-inline-source-plugin": "0.0.6",
+    "html-webpack-plugin": "^2.28.0",
+    "pdk-client": "^0.1.0",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "pdk-client": "^0.1.0",
+    "when": "^3.7.8"
   }
 }
